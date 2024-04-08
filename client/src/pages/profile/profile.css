@@ -14,7 +14,7 @@
 }
 
 /* NavbarTop */
-.navbar-top {
+.profile .navbar-top {
     background-color: #fff;
     color: #333;
     box-shadow: 0px 4px 8px 0px grey;
@@ -28,7 +28,7 @@
     left: 45%;
 }
 
-.navbar-top ul {
+.profile .navbar-top ul {
     float: right;
     list-style-type: none;
     margin: 0;
@@ -36,18 +36,18 @@
     padding: 18px 50px 0 40px;
 }
 
-.navbar-top ul li {
+.profile .navbar-top ul li {
     float: left;
 }
 
-.navbar-top ul li a {
+.profile .navbar-top ul li a {
     color: #333;
     padding: 14px 16px;
     text-align: center;
     text-decoration: none;
 }
 
-.icon-count {
+.profile .icon-count {
     background-color: #ff0000;
     color: #fff;
     float: right;
@@ -60,17 +60,17 @@
 /* End */
 
 /* Sidenav */
-.sidenav {
-    background-color: #fff;
+.profile .sidenav {
     color: #333;
     border-bottom-right-radius: 25px;
     height: 86%;
-    left: 0;
+    left: 12%;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 50px;
     position: absolute;
-    top: 70px;
-    width: 250px;
+    top: 150px;
+    width: 200px;
+    padding-left: 90px;
 }
 
 .profile {
@@ -88,49 +88,55 @@
     font-size: 20px;
     font-weight: bold;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
+.profile button {
+    z-index: 1;
+    position: relative;
+    color: black;
+    border-radius: 30px;
+    padding: 10px 16px;
+    outline: none;
+    border: 1px solid #90CAF9;
+    background-color: transparent;
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+  }
 
-.job {
-    font-size: 16px;
-    font-weight: bold;
-    padding-top: 10px;
-}
+ .profile button::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #90CAF9;
+    transform-origin: center;
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+    transition: transform 0.45s ease-in-out;
+  }
 
-.url, hr {
-    text-align: center;
-}
+ .profile button:hover {
+    cursor: pointer;
+    color: black;
+  }
 
-.url hr {
-    margin-left: 20%;
-    width: 60%;
-}
-
-.url a {
-    color: #818181;
-    display: block;
-    font-size: 20px;
-    margin: 10px 0;
-    padding: 6px 8px;
-    text-decoration: none;
-}
-
-.url a:hover, .url .active {
-    background-color: #e8f5ff;
-    border-radius: 28px;
-    color: #000;
-    margin-left: 14%;
-    width: 65%;
-}
+ .profile button:hover::before {
+    transform: translate3d(-50%, -50%, 0) scale3d(15, 15, 15);
+  }
 
 /* End */
 
 /* Main */
 .main {
     margin-top: 2%;
-    margin-left: 29%;
+    margin-left: 30%;
     font-size: 28px;
     padding: 0 10px;
     width: 58%;
+    
 }
 
 .main h2 {
@@ -161,7 +167,3 @@
     color: #e7e7e8;
     right: 14%;
 }
-
-
-
-/* End */

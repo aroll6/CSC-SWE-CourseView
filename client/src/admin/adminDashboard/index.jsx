@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../adminLayout/SideBar';
 import Navbar from '../adminLayout/NavBar';
 import "./adminDashboard.css";
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
 
 export const AdminDashboard = () => {
     const [sidebarHidden, setSidebarHidden] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (Cookies.get("isAdmin") !== '1')
+            navigate("/");
+    });
 
     const handleToggleSidebar = () => {
         setSidebarHidden(!sidebarHidden);
@@ -67,7 +76,7 @@ export const AdminDashboard = () => {
                             <thead>
                                 <tr>
                                     <th>User</th>
-                                    <th>Date Order</th>
+                                    <th>Date</th>
                                     <th>Operator</th>
                                     <th>Status</th>
                                     <th>Role</th>
@@ -77,7 +86,7 @@ export const AdminDashboard = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <p>user</p>
+                                        <p>Minh Le</p>
                                     </td>
                                     <td>04-01-2024</td>
                                     <td>Admin</td>

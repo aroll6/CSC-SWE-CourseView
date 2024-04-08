@@ -71,6 +71,9 @@ app.post("/dummydata", upload.single('picture'), async (req, res) => {
         case "logout":
             Authentication.logout(key, res);
             break;
+        case "getUserFullName":
+            Authentication.getUserFullName(data, res);
+            break;
         
         default:        
             res.status(400).json("Bad Request");

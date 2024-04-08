@@ -86,6 +86,16 @@ export default class Authentication {
 
         return randomKey;
     }
+    static getUserFullName(data, res) {
+        let userID = data.userID; // Assuming you're passing userID in the request body
+        db.execute(`SELECT fullName,email FROM user WHERE userID = ${userID}`, (err, data) => {
+            if (err) return res.json(err);
+            if (data.length === 0) return res.status(404).json("User not found");
+    
+            const {fullName,email} = data[0];
+            return res.status(200).json({ fullName,email });
+        });
+    }
 
 
 }

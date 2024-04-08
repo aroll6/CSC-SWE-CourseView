@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
+import ClientAPI from "../../api/clientAPI";
 import './profile.css';
 
 
 export const Profile = () => {
+  const [userFullName, setUserFullName] = useState("");
+  const [userEmail, setUserEmail] = useState(""); 
+  useEffect(() => {
+    async function fetchUserFullName() {
+      try {
+        const data = { userID: Cookies.get("userID") };
+        const respond = await ClientAPI.post("getUserFullName", data);
+        setUserFullName(respond.data.fullName);
+        setUserEmail(respond.data.email)
+      } catch (error) {
+        console.error("Error fetching user's full name:", error);
+      }
+    }
+
+    if (Cookies.get("userID")) {
+      fetchUserFullName();
+    }
+  }, [Cookies.get("userID")]);
+
     return(
+      
     <div className='profile'>
       {/* Sidenav */}
       <div className="sidenav">
@@ -14,20 +36,8 @@ export const Profile = () => {
             width={100}
             height={100}
           />
-          <div className="name">ImDezCode</div>
-          <div className="job">Web Developer</div>
-        </div>
-        <div className="sidenav-url">
-          <div className="url">
-            <a href="#profile" className="active">
-              Profile
-            </a>
-            <hr align="center" />
-          </div>
-          <div className="url">
-            <a href="#settings">Settings</a>
-            <hr align="center" />
-          </div>
+          <div className="name">{userFullName}</div>
+          <button>Edit</button>
         </div>
       </div>
       {/* End */}
@@ -42,12 +52,12 @@ export const Profile = () => {
                 <tr>
                   <td>Name</td>
                   <td>:</td>
-                  <td>ImDezCode</td>
+                  <td>{userFullName}</td>
                 </tr>
                 <tr>
                   <td>Email</td>
                   <td>:</td>
-                  <td>imdezcode@gmail.com</td>
+                  <td>{userEmail}</td>
                 </tr>
                 <tr>
                   <td>Address</td>
