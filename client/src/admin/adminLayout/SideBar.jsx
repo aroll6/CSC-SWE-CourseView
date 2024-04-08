@@ -9,8 +9,8 @@ const Sidebar = ({ hidden }) => {
   const allSideMenu = [
     { text: 'Dashboard', icon: '/dashboard_icon.png', href: '/adminDashboard' },
     { text: 'Courses', icon: '/courses_icon.png', href: '/adminCourses' },
-    { text: 'Terms', icon: '/terms_icon.png', href: '/adminTerms' },
-    { text: 'Department', icon: '/department_icon.png', href: '/adminDepartment' },
+    { text: 'User Profile', icon: '/terms_icon.png', href: '/adminTerms' },
+    { text: 'Review', icon: '/department_icon.png', href: '/adminDepartment' },
   ];
 
   const handleMenuItemClick = (index, route) => {
